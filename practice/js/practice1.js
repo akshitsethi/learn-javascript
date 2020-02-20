@@ -80,7 +80,7 @@ if (word) {
 var age = 20;
 age >= 18 ? console.log('Person is eligible to vote') : console.log('Too young to vote');
 
-// Coding challenge no.2
+// Coding challenge #2
 var scoreJohn = (89 + 120 + 90) / 3;
 var scoreMark = (54 + 109 + 99) / 3;
 var scoreRock = (76 + 134 + 48) / 3;
@@ -147,3 +147,64 @@ whatDoYouDo('designer', 'Rock');
 // JS data types
 // String, Number, Boolean, Undefined, null
 
+// Moving on to Arrays
+var names = ['John', 'Mark', 'Rock', 'Stone', 'Akshit'];
+var ages = new Array(1972, 1964, 1981, 1959, 1987);
+
+// Trying to know the edge cases for JS
+var name = 'Akshit Sethi';
+var num = 3002;
+var bool = false;
+var xy;
+
+// On a string it tells the number of characters
+console.log(name.length);
+
+// Returns undefined on a number
+console.log(num.length);
+
+// This will throw an error in the console
+// Uncaught TypeError: Cannot read property 'length' of undefined
+// same for null datatype
+// console.log(xy.length);
+
+// Returns undefined for a boolean
+console.log(bool.length);
+
+// Returns the number of elements for an array
+console.log(names.length);
+
+let yz = null;
+console.log(typeof yz);
+
+// Continue learning arrays
+var akshit = ['Akshit', 'Sethi', 1987, 'Entrepreneur', false];
+akshit.push('Net worth is $100M'); // Adds to the end of the array
+akshit.unshift('Mr.'); // Adds to the beginning of the array
+
+akshit.pop(); // Removes from the end of the array
+akshit.shift(); // Removes from the beginning of the array
+console.log(akshit);
+
+// Check the index value of an array item
+console.log(akshit.indexOf(1987));
+console.log(akshit.indexOf('Engineer')); // -1 will be returned if the value does not exist in the array
+
+// Coding challenge #3
+
+var tipCalculator = function(billAmount) {
+  switch (true) {
+    case billAmount < 50:
+      return (billAmount * 20) / 100;
+    case billAmount >=50 && billAmount < 200:
+      return (billAmount * 15) / 100;
+    case billAmount >=200:
+      return (billAmount * 10) / 100;
+  }
+}
+
+const bills = [124, 89, 42, 237];
+console.log(tipCalculator(bills[0]));
+console.log(tipCalculator(bills[1]));
+console.log(tipCalculator(bills[2]));
+console.log(tipCalculator(bills[3]));
