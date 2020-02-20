@@ -15,7 +15,7 @@ console.error('Error message');
 console.log('%cCustom styled message', 'color:#0b0b0b;background:#eeeeee');
 
 // If / else statements
-var count = 10;
+var count = 11;
 
 if (count > 10 && count < 20) {
   console.log('Average score');
@@ -61,7 +61,7 @@ switch (job) {
 
 // Checking for existence of the variables
 var word = '';
-var number;
+var number = 0;
 
 if (number) {
   console.log('Number does exist');
@@ -73,5 +73,22 @@ if (number) {
 if (word) {
   console.log('Word does exist and is true.');
 } else {
-  console.log('Word does NOT exist and returns false');
+  console.error('Word does NOT exist and returns false');
+}
+
+// Teranory operators
+var age = 20;
+age >= 18 ? console.log('Person is eligible to vote') : console.log('Too young to vote');
+
+// Coding challenge no.2
+var scoreRock = (89 + 120 + 90) / 3;
+var scoreMark = (54 + 109 + 99) / 3;
+var scoreJohn = (76 + 134 + 48) / 3;
+
+if (scoreJohn > scoreMark && scoreJohn > scoreRock) {
+  console.log('John has the best average out of the 3 players');
+} else if (scoreMark > scoreJohn && scoreMark > scoreRock) {
+  console.log('Mark has the best average out of the 3 players');
+} else {
+  console.log('Rock has the best average out of the 3 players');
 }
