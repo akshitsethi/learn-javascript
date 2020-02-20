@@ -81,14 +81,69 @@ var age = 20;
 age >= 18 ? console.log('Person is eligible to vote') : console.log('Too young to vote');
 
 // Coding challenge no.2
-var scoreRock = (89 + 120 + 90) / 3;
+var scoreJohn = (89 + 120 + 90) / 3;
 var scoreMark = (54 + 109 + 99) / 3;
-var scoreJohn = (76 + 134 + 48) / 3;
+var scoreRock = (76 + 134 + 48) / 3;
 
 if (scoreJohn > scoreMark && scoreJohn > scoreRock) {
   console.log('John has the best average out of the 3 players');
 } else if (scoreMark > scoreJohn && scoreMark > scoreRock) {
   console.log('Mark has the best average out of the 3 players');
-} else {
+} else if (scoreRock > scoreJohn && scoreRock > scoreMark) {
   console.log('Rock has the best average out of the 3 players');
+} else {
+  console.log('None of the players is better than each other');
 }
+
+// Moving to functions
+// Random test
+console.log('%cThis is my custom styled message', 'background:red;color:#ffffff;');
+
+function calculateAge(birthYear) {
+  const date = new Date().getFullYear();
+  return date - birthYear;
+}
+
+console.log('I am ' + calculateAge(1987) + ' years old.');
+
+function isRetired(birthYear, ageOfRetirement) {
+  const age = calculateAge(birthYear);
+  const yearsToRetire = ageOfRetirement - age;
+
+  if (yearsToRetire > 0) {
+    console.log('The person will be retired from work in ' + yearsToRetire + ' years');
+  } else {
+    console.log('The person is already retired from work');
+  }
+}
+
+isRetired(1987, 35);
+
+// Function expressions
+var whatDoYouDo = function(job, firstName) {
+  switch (job) {
+    case 'programmer':
+      console.log(firstName + ' writes excellent piece of code.');
+      break;
+    case 'teacher':
+      console.log(firstName + ' teaches kids how to code');
+      break;
+    case 'driver':
+      console.log(firstName + ' drives a cab in New Delhi');
+      break;
+    case 'designer':
+      console.log(firstName + ' designs beautiful websites for the company');
+      break;
+    default:
+      console.log(firstName + ' is into something else');
+  }
+}
+
+whatDoYouDo('programmer', 'Akshit');
+whatDoYouDo('teacher', 'John');
+whatDoYouDo('driver', 'Mark');
+whatDoYouDo('designer', 'Rock');
+
+// JS data types
+// String, Number, Boolean, Undefined, null
+
