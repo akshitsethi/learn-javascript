@@ -204,7 +204,37 @@ var tipCalculator = function(billAmount) {
 }
 
 const bills = [124, 89, 42, 237];
+
+// Mutate an array
+bills[2] = 98;
+
 console.log(tipCalculator(bills[0]));
 console.log(tipCalculator(bills[1]));
 console.log(tipCalculator(bills[2]));
 console.log(tipCalculator(bills[3]));
+
+// NOW: Objects
+// Object literal
+var akshit = {
+  firstName: 'Akshit',
+  lastName: 'Sethi',
+  description: 'Programmer & Entrepreneur by passion. Addicted to coding and spanish',
+  birthYear: 1987,
+  isMarried: false,
+  hometown: 'Delhi',
+  favouriteCity: 'Mumbai',
+  numberOfMillions: 100,
+  calculateAge: function() {
+    const date = new Date().getFullYear();
+    this.age = date - this.birthYear;
+  }
+}
+
+akshit.calculateAge();
+console.log(akshit);
+
+// Calling object properties
+console.log(akshit.firstName);
+
+// another way is to call them just like arrays
+console.log(akshit['lastName']);
