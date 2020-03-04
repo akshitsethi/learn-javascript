@@ -238,3 +238,42 @@ console.log(akshit.firstName);
 
 // another way is to call them just like arrays
 console.log(akshit['lastName']);
+
+// moving on to loops
+// for loop
+for (var i = 0; i < 10; i++) {
+  console.log(i);
+}
+
+// another array
+var akshit = new Array(200, 300, 400, 500, 600, 700);
+
+// another for loop example
+for (var i = 0; i < akshit.length; i++) {
+  console.log(akshit[i]);
+}
+
+// re-creating the above example using while loop
+var i = 0;
+while (i < akshit.length) {
+  console.log(akshit[i]);
+  i++;
+}
+
+// moving on to continue and break statements
+// print only for number 500
+for (var i = 0; i < akshit.length; i++) {
+  if (akshit[i] === 500) console.log('500 is my lucky number.');
+  continue;
+}
+
+// break if the number 500 is there in the loop
+for (var i = 0; i < akshit.length; i++) {
+  if (akshit[i] === 500) break;
+  console.log(akshit[i]);
+}
+
+// reverse loop
+for (var i = akshit.length - 1; i >= 0; i--) {
+  console.log(akshit[i]);
+}
