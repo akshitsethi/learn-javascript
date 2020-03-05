@@ -277,3 +277,47 @@ for (var i = 0; i < akshit.length; i++) {
 for (var i = akshit.length - 1; i >= 0; i--) {
   console.log(akshit[i]);
 }
+
+// Coding challenge #4
+let challenge = {
+  bills: [224, 498, 104, 55, 90, 347, 220, 86],
+  tips: [],
+  totals: [],
+  calculateTip: function() {
+    for (var i = 0; i < this.bills.length; i++) {
+      let tip;
+
+      switch(true) {
+        case this.bills[i] < 75:
+          tip = (this.bills[i] * 20) / 100;
+          break;
+        case this.bills[i] >= 75 && this.bills[i] < 250:
+          tip = (this.bills[i] * 15) / 100;
+          break;
+        case this.bills[i] >= 250 :
+          tip = (this.bills[i] * 10) / 100;
+          break;
+      }
+
+      this.tips.push(tip);
+      this.totals.push(this.bills[i] + tip);
+    }
+  },
+  calculateAverage: function() {
+    let total = 0;
+
+    for (var i = 0; i < this.bills.length; i++) {
+      total = total + this.bills[i];
+    }
+
+    this.totalBill = total;
+    this.averageBill = total / this.bills.length;
+  }
+}
+
+challenge.calculateTip();
+challenge.calculateAverage();
+console.log(challenge.tips);
+console.log(challenge.totals);
+console.log(challenge.totalBill);
+console.log(challenge.averageBill);
