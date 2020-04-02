@@ -26,4 +26,4 @@
  * current score if one of them is a 1.
  */
 
-var scores, roundScore, activePlayer, gamePlaying;
+// This game has been completed in the JS-Projects repository and goes by the name of `Dice Game`.
