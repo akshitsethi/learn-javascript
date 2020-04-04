@@ -164,3 +164,13 @@ call1('Akshit');
 // Another way of calling the function
 example2('designer')('Akshit');
 example2('entrepreneur')('Akshit');
+
+// Immediately invoked function expression IIFE
+(function() {
+  console.log('Example of IIFE.');
+})();
+
+// Example of IIFE with function params
+(function(name) {
+  console.log('Hola ' + name + ', how are you doing today?');
+})('Akshit');
