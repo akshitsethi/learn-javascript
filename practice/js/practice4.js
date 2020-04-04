@@ -174,3 +174,27 @@ example2('entrepreneur')('Akshit');
 (function(name) {
   console.log('Hola ' + name + ', how are you doing today?');
 })('Akshit');
+
+// Now, moving to Closures
+// Re-writing the existing function to demonstrate the example of a closure
+// Closure means that a function has access to the variables of the outer function even
+// after the outer function has returned and it's execution context is gone.
+var exClosure = function(job) {
+  return function(name) {
+    switch (job) {
+      case 'designer':
+        console.log(name + ', what is the new design you are working on?');
+        break;
+      case 'teacher':
+        console.log(name + ', which topic are you going to teach today?');
+        break;
+      case 'programmer':
+        console.log(name + ', how many bugs have you fixed today?');
+        break;
+      default:
+        console.log(name + ', what the fuck are you working on today?');
+    }
+  }
+}
+
+exClosure('entrepreneur')('Akshit');
