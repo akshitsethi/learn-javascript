@@ -198,3 +198,136 @@ var exClosure = function(job) {
 }
 
 exClosure('entrepreneur')('Akshit');
+
+// bind, call, and apply methods
+// Let's start with the call method. As an example, we have two objects
+var john = {
+  name: 'John',
+  yearOfBirth: 1987,
+  job: 'Professor',
+  calculateAge: function() {
+    console.log(2020 - this.yearOfBirth);
+  }
+}
+
+// Another object
+var emily = {
+  name: 'Emily',
+  yearOfBirth: 1990,
+  job: 'Model'
+}
+
+// As visible, second object does not have the calculate method but we can call the
+// method from the first object to the second one
+// This outputs the age for the emily object
+// john.calculateAge.call(emily);
+
+// Similarly, bind method is similar to the call method. As, the name suggests it adds the
+// method to the second object instead of calling it
+// john.calculateAge.bind(emily);
+
+// Similarly, apply method is also same as the call method. The main difference comes 
+// when passing arguements to the method. Args are passed individually in the call method
+// wheres for the apply method, they passed as an array.
+// Examples
+var mark = {
+  calculateAge: function(yearOfBirth, logger) {
+    if (logger) {
+      console.log(2020 - yearOfBirth);
+    }
+  }
+}
+
+// Now for the call method, we do it something like
+// mark.calculateAge.call(emily, 1990);
+
+// Whereas for the apply method, it should be an array
+mark.calculateAge.bind(emily)(1990, true);
+
+// Need to spend more time understanding this. Can be done by solving more problem sets
+// Coding Challenge: Basic & Expert both in one solution
+(function() {
+  var score = 0;
+  var Question = function(question, options, solution) {
+    this.question = question;
+    this.options = options;
+    this.solution = solution;
+  }
+
+  // Create few questions
+  var ques1 = new Question(
+    'How hard it is to learn JavaScript?',
+    ['Not easy', 'Normal', 'Difficult', 'Needs perfection'],
+    3
+  );
+
+  var ques2 = new Question(
+    'When is the new season of Friends coming?',
+    ['January 2021', 'May 2020', 'March 2022', 'Never'],
+    1
+  );
+
+  var ques3 = new Question(
+    'Who is the hottest Instagram model?',
+    ['Jacqueline Fernandez', 'Sapna Pabbi', 'Mithali Palekar', 'Mouni Roy'],
+    0
+  );
+
+  var questions = [ques1, ques2, ques3];
+
+  var getQuestion = function() {
+    var random = Math.floor(Math.random() * 3);
+    var selectedQuestion = questions[random];
+
+    console.log(selectedQuestion.question);
+
+    // Loop over the options
+    for (var i = 0; i < selectedQuestion.options.length; i++) {
+      console.log(i + ': ' + selectedQuestion.options[i]);
+    }
+
+    // For prompt and processing the answer
+    questions[random].processAnswer();
+  }
+
+  Question.prototype.processAnswer = function() {
+    // Show the prompt
+    var answer = prompt('Enter your answer in this prompt!');
+
+    // If exit, then don't do anything further
+    if (answer) {
+      if (answer !== 'exit') {
+        // Now, check for solution
+        if (Number(answer) === this.solution) {
+          this.processScore(true);
+        } else {
+          this.processScore(false);
+        }
+      }
+    } else {
+      // Show the next question
+      getQuestion();
+    }
+  }
+
+  Question.prototype.processScore = function(status) {
+    if (status) {
+      // Increment the score
+      ++score;
+
+      // Show the message in the console.
+      console.log('Correct answer!');
+    } else {
+      console.log('Wrong answer :(');
+    }
+
+    console.log('-------------------');
+    console.log('Your score is ' + score);
+    console.log('-------------------');
+
+    // Show the next question
+    getQuestion();
+  }
+
+  getQuestion();
+})();
