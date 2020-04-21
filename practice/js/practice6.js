@@ -77,4 +77,84 @@ console.log(name1.startsWith('v'));
 console.log(name1.endsWith('thi'));
 console.log(name1.includes('shit'));
 
+// Small but important topic
+// About IIFE and blocks
+// In ES5, for code privacy, we use the IIFE to isolate the code from the rest
+// of the code. Something like below
+(function() {
+  var a = 'Something';
+  var b = 'Another variable';
+
+  function ab() {
+    return 'Dummy function';
+  }
+})();
+
+// In ES6, we can use blocks to achieve the same thing.
+// Example
+{
+  var a = 'Something';
+  var b = 'Another variable';
+
+  function ab() {
+    return 'Dummy function';
+  }
+}
+
 // All done with strings. Now moving to arrow functions
+// First example
+var arrow1 = (param1) => {
+  console.log(param1);
+}
+
+// foreach function using the arrow function
+var arr1 = [10, 20, 30, 40, 50, 60];
+arr1.forEach((el, index, arr) => arr[index] = el * 2);
+
+console.log(arr1);
+
+// Lexical this keyword in arrow functions
+// First example
+var abc = {
+  name: 'Rachael Green',
+  age: 28,
+  city: 'New York',
+  calculateAge: function() {
+    // Workaround for lexical `this` keyword
+    var self = this;
+
+    return function() {
+      return new Date().getFullYear() - self.age;
+    }
+  }
+}
+
+// This will get undefined because the lexical `this` keyword is not binded
+// It is only binded in ES5 when the function is called directly by the object
+// which is not the case over here.
+console.log(abc.calculateAge()());
+
+// Now, doing the same example in ES6
+var abc1 = {
+  name: 'Rachael Green',
+  age: 28,
+  city: 'New York',
+  calculateAge: function() {
+    return () => {
+      return new Date().getFullYear() - this.age;
+    }
+  }
+}
+console.log(abc1.calculateAge()());
+
+// Example of creating arrays from nodelist
+// ES5 example
+var nodes = document.querySelectorAll('.example');
+
+// Converts to array
+var nodesArr = Array.prototype.slice.call(nodes);
+
+// ES6 example
+var nodesArr = Array.from(nodes);
+
+
