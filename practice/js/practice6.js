@@ -44,3 +44,37 @@ b();
 // For const, the only difference of it from let is that its value cannot be
 // changed later on during the course of the application
 
+// Now, moving on to the string functions
+// One is template literals
+let sum1, sum2;
+
+sum1 = 30;
+sum2 = 20;
+
+var joinStrings = sum1 + ' is greater than ' + sum2;
+let literals = `${sum1} is greater than ${sum2}`;
+
+// As can be seen, the second method of joining strings is better than 
+// the previous method of joining string and variables
+
+// We can also execute functions inside template literals
+function name() {
+  return 'Akshit Sethi';
+}
+
+console.log(`My name is ${name()}`);
+
+// Random stuff (displaying a custom styled message)
+console.log('%cThis is a custom styled message', 'color:pink;font-weight:bold');
+
+
+// Moving to string functions
+let name1 = 'Akshit Sethi';
+
+// Important functions for string
+console.log(name1.charAt(1));
+console.log(name1.startsWith('v'));
+console.log(name1.endsWith('thi'));
+console.log(name1.includes('shit'));
+
+// All done with strings. Now moving to arrow functions
