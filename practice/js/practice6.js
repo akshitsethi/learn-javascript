@@ -157,4 +157,46 @@ var nodesArr = Array.prototype.slice.call(nodes);
 // ES6 example
 var nodesArr = Array.from(nodes);
 
+// Now, moving on to a small topic such as destructuring
+// and it with another one, which is the spread operator
+var exArr1 = ['Akshit Sethi', 1987, 32, 'New Delhi'];
 
+// Now, to destructure this array, all I have to do is
+const [asname, asdob, asage, ascity] = exArr1;
+// And console log it
+console.log(asname, asdob, asage, ascity);
+
+// Similary for objects
+// One thing to take care of is that the object keys should be matched when
+// destructuring the object
+const obj1 = {
+  name: 'Akshit Sethi',
+  age: 32,
+  city: 'New York'
+}
+
+var {name, age, city} = obj1;
+console.log(name, age, city);
+
+// To use own names instead of the keys, we can do something like below
+var {name: bbname, age: myage, city: ccc1} = obj1;
+console.log(bbname, myage, ccc1);
+
+// That's all about destructuring
+// Moving on to the spread operator
+// Spread operator means to use  ... instead of defining the complete items
+// An example
+var arr4 = [10, 20, 30, 40, 50, 60];
+
+function sum(a, b, c, d, e, f) {
+  return a + b + c + d + e + f;
+}
+
+// We can call the above function using the spread operator as arguement
+console.log(sum(...arr4));
+
+// Spread operator can be also be used to combine arrays
+var arr5 = ['Jane', 'Maria', 'Ester', 'Danna'];
+var arr6 = [...arr4, 'Girls', ...arr5];
+
+console.log(arr6);
