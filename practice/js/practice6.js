@@ -310,3 +310,85 @@ for (let [key, value] of questions.entries()) {
 // To clear values of the map, we can simply use the clear method
 questions.clear();
 console.log(questions);
+
+// The final topic in the section is the classes and subclasses
+// Let's start with defining classes the old way using the function contructor
+// and then adding methods to the prototype chain of the function object
+var Person = function(name, dob, city, profession) {
+  this.name = name;
+  this.dob = dob;
+  this.city = city;
+  this.profession = profession;
+}
+
+// Let's add a method to it's prototype chain
+Person.prototype.calculateRetirement = function() {
+  age = new Date().getFullYear() - this.dob;
+  return 60 - age;
+}
+
+// Now make an athlete class which extends the Person class
+var Athlete = function(name, dob, city, profession, competitions, medals) {
+  Person.call(this, name, dob, city, profession);
+  this.competitions = competitions;
+  this.medals = medals;
+}
+
+// So, now the athlete object also includes or extends the Person object
+// Let's extend the prototype object for the athlete class as well
+Athlete.prototype = Object.create(Person.prototype);
+
+// Now, let's add a method to the athlete prototype
+Athlete.prototype.addMedal = function() {
+  return ++this.medals;
+}
+
+// And testing this out
+var test1 = new Athlete('John Doe', 1987, 'New York', 'Entrepreneur', 4, 10);
+console.log(test1);
+console.log(test1.calculateRetirement());
+
+test1.addMedal();
+test1.addMedal();
+
+// Now, how it is done in ES6 is shown with the help of an example
+class Person6 {
+  constructor(name, dob, city, profession) {
+    this.name = name;
+    this.dob = dob;
+    this.city = city;
+    this.profession = profession;
+  }
+
+  // Adding a method in a class is quite simple
+  calculateRetirement() {
+    age = new Date.getFullYear() - this.dob;
+    return 60 - age;
+  }
+}
+
+// Now, to make a class extend another class is as simple as this
+class Athlete6 extends Person6 {
+  constructor(name, dob, city, profession, competitions, medals) {
+    super(name, dob, city, profession);
+
+    this.competitions = competitions;
+    this.medals = medals;
+  }
+
+  // Now, we can add a method to this subclass which will be available
+  // just to this class and not the parent class
+  // But the parent class methods will be available to this class as well
+  addMedal() {
+    ++this.medals;
+  }
+}
+
+var anotherTest = new Athlete('Akshit Sethi', 1987, 'New Delhi', 'Entrepreneur', 4, 10);
+console.log(anotherTest);
+
+// Add medal
+anotherTest.addMedal();
+
+// Calculate retirement
+console.log(anotherTest.calculateRetirement());
