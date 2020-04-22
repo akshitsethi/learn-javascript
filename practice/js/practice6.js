@@ -200,3 +200,113 @@ var arr5 = ['Jane', 'Maria', 'Ester', 'Danna'];
 var arr6 = [...arr4, 'Girls', ...arr5];
 
 console.log(arr6);
+
+// Similar to spread operator, another handy one is the rest operator
+// Before that, let's see the arguements keywords provided by JS
+// Also, see how it's done in ES5
+var args5 = function(limit) {
+  console.log(arguments);
+
+  // Set var to 0
+  let sum = 0;
+
+  // Convert object to array
+  // To skip one variable from the arguments list, we can do something like below
+  // Define the starting index
+  var argsArr = Array.prototype.slice.call(arguments, 1);
+
+  argsArr.forEach(function(element, index, arr) {
+    sum += element;
+  });
+
+  console.log(sum);
+}
+
+// Now, in ES6
+// Using shorthand function just to practice it more
+// In ES6, it as simple as defining it in the paramters
+var args6 = (limit, ...years) => {
+  years.forEach(element => {
+    console.log(element);
+  });
+
+  // Log the limit variable
+  console.log(limit);
+}
+
+args5('Akshit', 10, 20, 30, 40, 50);
+args6('Fuck limit', 10, 20, 30, 40, 50);
+
+// Next one is default parameters
+// In ES5
+function default5(name, age) {
+  name = name || 'Akshit Sethi';
+  age = age || 32;
+
+  console.log(name, age);
+}
+
+// ES6
+function default6(name = 'Akshit Sethi', age = 32) {
+  console.log(name, age);
+}
+
+default5('Jacob Smith');
+default6();
+
+// Before I move forget again, here is the for of loop example
+var arr10 = ['Jane', 'Nicolette', 'Kendra', 'Fiamurr'];
+
+for (let element of arr10) {
+  console.log(element);
+}
+
+// Another example of for of loop with destructuring
+var arr11 = [10, 20, 30];
+var arr12 = {
+  name: 'Akshit Sethi',
+  age: 32
+}
+
+// Maps
+// Important datatype introduced in ES6
+var questions = new Map();
+
+// It is set with a key and value
+// Unlike objects, keys can be any data type whereas in objects it can only
+// be a string
+questions.set('question', 'Which is the hottest celebrity on Instagram?');
+
+// Now, setting a key with an integer
+questions.set(1, 'Sapna Pabbi');
+questions.set(2, 'Jacqueline Fernandes');
+questions.set(3, 'Urvashi Rautela');
+questions.set(4, 'Sherlyn Chopra');
+
+// Setting a key with a boolean
+questions.set(true, 'That\'s a correct answer :)');
+questions.set(false, 'Wrong answer!');
+
+// Correct answer
+questions.set('correct', 2);
+
+// Now, moving to the get part of Maps
+console.log(questions.get('question'));
+
+// We can also loop over the Maps
+// .enteries() is to fetch all the key value pairs
+for (let [key, value] of questions.entries()) {
+  if (typeof key === 'number') {
+    console.log(key, value);
+  }
+}
+
+// Ask for the correct answer using the prompt box
+// var ansme = parseInt(prompt('Please type your answer here.'));
+
+// Check for the solution and display the correct response
+// console.log(questions.get(ansme === questions.get('correct')));
+
+// To clear values of the map, we can simply use the clear method
+questions.clear();
+console.log(questions);
