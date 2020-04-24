@@ -29,45 +29,98 @@ function callback() {
 // callback();
 
 // Using Promises in ES6
+// const getIds = new Promise((resolve, reject) => {
+//   setTimeout(() => {
+//     // Run code to get the ID's
+//     const ids = [120, 842, 556, 613, 393];
+//     console.log(ids);
+
+//     // Resolve means that the promise returned successfully
+//     // Reject means that there was an error
+//     resolve(ids);
+//   }, 2000);
+// });
+
+// // Continuing with the promise
+// getIds
+// .then(ids => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       // Get receipe for a specific ID
+//       const receipe = {
+//         id: ids[2],
+//         name: 'Italian Tomato Pasta',
+//         publisher: 'Jane Miller'
+//       };
+//       console.log(`Receipe: ${receipe.name} by ${receipe.publisher}`);
+      
+//       // Again, resolve this request
+//       resolve(receipe);
+//     }, 2000);
+//   });
+// })
+// .then(({publisher}) => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       // Show the related receipe
+//       console.log(`Related receipe by ${publisher}: Fluffy Egg Omelette`);
+//       reject('This request errored.');
+//     }, 1500);
+//   });
+// })
+// .catch(error => {
+//   console.log(`There was an error: ${error}`);
+// });
+
+// Lets see async await in action for the above code
+// ES5 way
 const getIds = new Promise((resolve, reject) => {
   setTimeout(() => {
-    // Run code to get the ID's
-    const ids = [120, 842, 556, 613, 393];
-    console.log(ids);
-
-    // Resolve means that the promise returned successfully
-    // Reject means that there was an error
+    ids = [100, 200, 300, 400, 500];
     resolve(ids);
   }, 2000);
 });
 
-// Continuing with the promise
-getIds
-.then(ids => {
+const getReceipe = (ids) => {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
+    setTimeout((ids) => {
       // Get receipe for a specific ID
       const receipe = {
         id: ids[2],
         name: 'Italian Tomato Pasta',
         publisher: 'Jane Miller'
       };
-      console.log(`Receipe: ${receipe.name} by ${receipe.publisher}`);
-      
+
       // Again, resolve this request
       resolve(receipe);
-    }, 2000);
+    }, 2000, ids);
   });
-})
-.then(({publisher}) => {
+}
+
+const getRelated = (publisher) => {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
+    setTimeout((publisher) => {
       // Show the related receipe
-      console.log(`Related receipe by ${publisher}: Fluffy Egg Omelette`);
-      reject('This request errored.');
-    }, 1500);
+      reject(`Related receipe by ${publisher}: Fluffy Egg Omelette`);
+    }, 2000, publisher);
   });
-})
-.catch(error => {
-  console.log(`There was an error: ${error}`);
-});
+}
+
+async function fetchIds() {
+  // Make use of try and catch blocks to catch the errors thrown by promises
+  // A rejected promise will be catched
+  try {
+    const ids = await getIds;
+    console.log(ids);
+
+    const receipe = await getReceipe(ids);
+    console.log(receipe);
+
+    const related = await getRelated(receipe.publisher);
+    console.log(related);
+  } catch(error) {
+    console.log(error);
+  }
+}
+
+fetchIds();
