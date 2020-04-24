@@ -124,3 +124,19 @@ async function fetchIds() {
 }
 
 fetchIds();
+
+// Moving to fetching data from a real world API
+// Using fetch method
+const fetchApi = () => {
+  fetch('https://graph.facebook.com/v6.0/me?fields=id%2Cname&access_token=EAAEjQEwfMuIBANic5412VlV15qR0TaCNM11otMZCau7aZBgANaG5CsRIgWIJFBOy1z0oXtGIe8et8CUCEUZBcnzQM2M2VJyNa2ICV9LCfr8HNZBCOdyJkv2yGGT81XZCaZAZBlGKG6YhF5iScqCDkW2nxExO8PoTImNTXEFjQG3wdkm5BCq5oVeg4csGOEsDI0ZD')
+  .then(result => {
+    // console.log(result);
+    return result.json();
+  })
+  .then(jsonData => {
+    console.log(jsonData);
+  })
+  .catch(error => console.log(error));
+}
+
+fetchApi();
